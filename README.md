@@ -26,7 +26,6 @@ This simple web application allows you to find SEO keywords from a piece of cont
 
 This project is a basic demonstration of extracting SEO keywords from content using JavaScript. It can be extended and improved for more advanced keyword analysis and optimization purposes.
 
----
 
 ## Contact Information
 
