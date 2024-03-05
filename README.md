@@ -40,7 +40,7 @@ For inquiries, collaborations, or project opportunities related to this system o
 
 ## Collaboration and Opportunities
 
-I'm open to collaborations, freelance work, or contributions related to this project or other relevant projects within this domain. Whether it's enhancing this system's features, building similar applications, or exploring new project ideas, I'm excited about meaningful collaborations and opportunities in the field of financial management systems.
+I'm open to collaborations, freelance work, or contributions related to this project or other relevant projects within this domain. Whether it's enhancing this system's features, building similar applications, or exploring new project ideas, I'm excited about meaningful collaborations and opportunities in the field.
 
 Feel free to reach out to me with any proposals, ideas, or inquiries. I'd be thrilled to discuss potential collaborations or contribute to your projects!
 
