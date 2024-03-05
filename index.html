@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Keyword Finder - ER A H Dekavadiya</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>SEO Keyword Finder</h2>
+        <textarea id="content" placeholder="Enter your content here..."></textarea>
+        <button onclick="findSEOKeywords()">Find Keywords</button>
+        <h3>SEO Keywords</h3>
+        <ul id="keywords"></ul>
+    </div>
+
+    <script>
+        function findSEOKeywords() {
+            const content = document.getElementById('content').value;
+            const words = content.toLowerCase().split(/\W+/);
+            const stopWords = ['a', 'an', 'the', 'and', 'or', 'for', 'in', 'on', 'of', 'to', 'with', 'is', 'are', 'was', 'were', 'can', 'could', 'should', 'would', 'will', 'shall', 'must', 'by', 'as', 'at', 'from', 'into', 'between', 'through', 'over', 'under', 'above', 'below', 'beside', 'after', 'before', 'underneath', 'behind', 'within', 'upon', 'along', 'among', 'about', 'above', 'alongside', 'according', 'also', 'although', 'even', 'though', 'however', 'nevertheless', 'nonetheless', 'while', 'whereas', 'whilst', 'though', 'despite', 'in spite of', 'moreover', 'furthermore', 'likewise', 'therefore', 'thus', 'hence', 'consequently', 'accordingly', 'otherwise', 'meanwhile', 'otherwise', 'rather', 'instead', 'sometimes', 'sometimes', 'yet', 'still', 'just', 'only', 'both', 'neither', 'nor', 'either', 'also', 'as well as', 'more', 'most', 'less', 'least', 'some', 'any', 'several', 'many', 'few', 'several', 'many', 'few', 'various', 'each', 'every', 'all', 'another', 'other', 'another', 'somebody', 'someone', 'something', 'anybody', 'anyone', 'anything', 'nobody', 'no one', 'nothing', 'none', 'anyone', 'both', 'each', 'either', 'neither', 'one', 'none', 'either', 'both', 'each', 'all', 'every', 'none', 'everything', 'everyone', 'everybody', 'everywhere', 'nowhere', 'somewhere', 'anywhere', 'moreover', 'furthermore', 'likewise', 'therefore', 'thus', 'hence', 'consequently', 'accordingly', 'otherwise', 'meanwhile', 'otherwise', 'rather', 'instead', 'sometimes', 'sometimes', 'yet', 'still', 'just', 'only', 'both', 'neither', 'nor', 'either', 'also', 'as well as', 'more', 'most', 'less', 'least', 'some', 'any', 'several', 'many', 'few', 'several', 'many', 'few', 'various', 'each', 'every', 'all', 'another', 'other', 'another', 'somebody', 'someone', 'something', 'anybody', 'anyone', 'anything', 'nobody', 'no one', 'nothing', 'none', 'anyone', 'both', 'each', 'either', 'neither', 'one', 'none', 'either', 'both', 'each', 'all', 'every', 'none', 'everything', 'everyone', 'everybody', 'everywhere', 'nowhere', 'somewhere', 'anywhere', 'their'];
+            const filteredWords = words.filter(word => !stopWords.includes(word));
+            const phrases = generatePhrases(filteredWords);
+            const wordFrequency = {};
+            phrases.forEach(phrase => {
+                if (phrase in wordFrequency) {
+                    wordFrequency[phrase]++;
+                } else {
+                    wordFrequency[phrase] = 1;
+                }
+            });
+            const filteredKeywords = Object.keys(wordFrequency).filter(word => wordFrequency[word] > 5);
+            const sortedKeywords = filteredKeywords.sort((a, b) => wordFrequency[b] - wordFrequency[a]);
+            const keywordsList = document.getElementById('keywords');
+            keywordsList.innerHTML = '';
+            sortedKeywords.forEach(keyword => {
+                const li = document.createElement('li');
+                li.textContent = keyword + ' (' + wordFrequency[keyword] + ')';
+                keywordsList.appendChild(li);
+            });
+        }
+
+        function generatePhrases(words) {
+            const phrases = [];
+            for (let i = 0; i < words.length; i++) {
+                for (let j = i + 1; j <= words.length; j++) {
+                    const phrase = words.slice(i, j).join(' ');
+                    phrases.push(phrase);
+                }
+            }
+            return phrases;
+        }
+    </script>
+</body>
+
+</html>
